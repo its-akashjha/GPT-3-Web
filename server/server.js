@@ -36,6 +36,21 @@ app.get('/', (req, res) => {
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/openai", require("./routes/openaiRoutes"));
 
+
+// Your code
+if (process.env.NODE_ENV === "production") {
+  const path = require("path");
+
+  app.get("/", (req, res) => {
+      app.use(express.static(path.resolve(__dirname, 'client', 'build')));
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'),function (err) {
+          if(err) {
+              res.status(500).send(err)
+          }
+      });
+  })
+}
+
 //listen server
 app.listen(PORT, () => {
   console.log(
