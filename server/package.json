@@ -10,7 +10,7 @@
     "client": "npm start --prefix ../client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "author": "Gautam Jha",
+  "author": "Akash Jha",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
